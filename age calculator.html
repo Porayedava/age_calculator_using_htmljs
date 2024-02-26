@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    input[type="text"] {
+        padding: 8px;
+        margin: 10px;
+        width: 200px;
+    }
+    input[type="button"] {
+        padding: 8px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<h2>Age Calculator</h2>
+<form id="ageCalculatorForm">
+    <input type="text" id="dob" placeholder="Enter Date of Birth (YYYY-MM-DD)">
+    <input type="button" value="Calculate Age" onclick="calculateAge()">
+</form>
+<p id="result"></p>
+<script>
+    function calculateAge() {
+        var dob = document.getElementById("dob").value;
+        var dobDate = new Date(dob);
+        var today = new Date();
+        var age = today.getFullYear() - dobDate.getFullYear();
+        var monthDiff = today.getMonth() - dobDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+        }
+        document.getElementById("result").innerHTML = "Your age is: " + age + " years";
+    }
+</script>
+</body>
+</html>
